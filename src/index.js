@@ -1,8 +1,8 @@
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import NewApiImageService from './js/searchQuery';
-import './sass/index.scss';
+import NewApiImageService from '/js/searchQuery';
+import '/sass/index.scss';
 
 const refs = {
   formEl: document.querySelector('#search-form'),
