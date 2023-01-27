@@ -2,8 +2,9 @@
   height: 42px;
   width: 100px;
   border-radius: 42px;
-  border: 2px solid #324b4e;
-  background: #fff;
+  color: rgb(226, 42, 102);
+  border: 2px solid rgb(55, 137, 193);
+  background: rgb(28, 28, 28);
   outline: none;
   cursor: pointer;
 
@@ -11,6 +12,10 @@
 
   &:hover,
   &:focus {
-    background-color: rgb(219, 219, 219);
+    background-color: rgb(28, 28, 28);
+    color: rgb(154, 200, 57);
+    border: 2px solid rgb(226, 42, 102);
+    letter-spacing: 0.8;
+    transition: 0.3s linear;
   }
 }
