@@ -12,7 +12,7 @@ const refs = {
 
 const simpleLightbox = new SimpleLightbox('.gallery a');
 
-const ImagesApi = new NewApiImageService();
+const imagesApi = new NewApiImageService();
 
 let totalPages = 1;
 
@@ -21,9 +21,9 @@ refs.formEl.addEventListener('submit', onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
   refs.divEl.innerHTML = '';
-  ImagesApi.resetPage();
-  ImagesApi.query = event.target.elements.searchQuery.value.trim();
-  if (ImagesApi.query === '') {
+  imagesApi.resetPage();
+  imagesApi.query = event.target.elements.searchQuery.value.trim();
+  if (imagesApi.query === '') {
     return Notiflix.Notify.warning('Please enter a query');
   }
 
@@ -31,7 +31,7 @@ function onFormSubmit(event) {
 }
 
 async function fetchImages() {
-  const response = await ImagesApi.fetchImage();
+  const response = await imagesApi.fetchImage();
   const { hits, totalHits } = response;
   totalPages = Math.ceil(totalHits / 40);
   if (!hits.length) {
@@ -87,20 +87,20 @@ function renderGallery(image) {
 function imagesMarkup(data) {
   refs.divEl.insertAdjacentHTML('beforeend', renderGallery(data.hits));
   simpleLightbox.refresh();
-  if (ImagesApi.page === totalPages) {
+  if (imagesApi.page === totalPages) {
     Notiflix.Notify.info(
       'We are sorry, but you have reached the end of search results.'
     );
   }
-  ImagesApi.incrementPage();
+  imagesApi.incrementPage();
 }
 
 // infinite scroll
 
 const onEntry = entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting && ImagesApi.query !== '') {
-      ImagesApi.fetchImage().then(images => {
+    if (entry.isIntersecting && imagesApi.query !== '') {
+      imagesApi.fetchImage().then(images => {
         imagesMarkup(images);
         simpleLightbox.refresh();
       });
