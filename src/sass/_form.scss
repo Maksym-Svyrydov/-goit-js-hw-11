@@ -22,6 +22,9 @@
   width: auto;
   align-items: center;
   justify-content: center;
+
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .form input {
@@ -35,8 +38,10 @@
   outline: none;
   position: relative;
   transition: 0.3s linear;
-}
-
-.form input:focus {
-  width: 350px;
+  &:focus {
+    width: 350px;
+  }
+  @media screen and (max-width: 425px) {
+    margin-bottom: 20px;
+  }
 }

@@ -14,6 +14,24 @@ p {
   margin-top: -30px;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    max-width: 767px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 2 * 15px) / 2);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex-basis: calc((100% - 3 * 30px) / 3);
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .photo-card {
